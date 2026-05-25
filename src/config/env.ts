@@ -27,7 +27,7 @@ const parsed = envSchema.safeParse(process.env);
 
 if (!parsed.success) {
   console.error("❌ Variables de entorno inválidas:");
-  console.error(parsed.error.flatten((issue) => issue.message).fieldErrors);
+  console.error(z.flattenError(parsed.error).fieldErrors);
   process.exit(1);
 }
 

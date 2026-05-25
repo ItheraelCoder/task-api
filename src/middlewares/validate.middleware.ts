@@ -34,9 +34,5 @@ export const validate =
       Object.assign(req.params, validateData.params);
     }
 
-    // req.body = validateData.body ?? req.body;
-    // req.query = validateData.query ?? req.query;
-    // req.params = validateData.params ?? req.params;
-
     next();
   };
