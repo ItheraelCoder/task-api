@@ -43,3 +43,17 @@ export const authenticate = async (
     next(new AppError("No autorizado", 401));
   }
 };
+
+export const authorize = (...roles: string[]) => {
+  return (req: Request, res: Response, next: NextFunction): void => {
+    if (!req.user) {
+      next(new AppError("No Autorizdo", 401));
+      return;
+    }
+    if (!roles.includes(req.user.role)) {
+      next(new AppError("No tienes permisos para realizar esta accion", 403));
+    }
+
+    next();
+  };
+};

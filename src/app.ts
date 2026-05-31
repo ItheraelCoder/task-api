@@ -2,7 +2,8 @@ import express, { type Application } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import { globalErrorHandler } from "@/middlewares/error.middleware";
-import authRoutes from "@/routes/aurth.routes";
+import authRoutes from "@/routes/auth.routes";
+import taskRoutes from "@/routes/task.routes";
 
 const app: Application = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.use("/api/auth", authRoutes);
+app.use("/api/tasks", taskRoutes);
 
 app.get("/health", (_req, res) => {
   res.status(200).json({
