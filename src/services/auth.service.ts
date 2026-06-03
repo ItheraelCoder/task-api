@@ -22,6 +22,8 @@ const saveRefreshToken = async (token: string, userId: string) => {
   const decoded = jwt.decode(token) as { exp: number };
   const expiresAt = new Date(decoded.exp * 1000);
 
+  // Eliminar refresh tokens anteriores del usuario antes de crear uno nuevo
+  await RefreshTokenModel.deleteByUserId(userId);
   await RefreshTokenModel.create({ token, userId, expiresAt });
 };
 
@@ -53,7 +55,7 @@ export const AuthService = {
     await saveRefreshToken(refreshToken, user.id);
 
     return {
-      user: { id: user.id, emai: user.email, role: user.role },
+      user: { id: user.id, email: user.email, role: user.role },
       accessToken,
       refreshToken,
     };
@@ -63,12 +65,12 @@ export const AuthService = {
     const user = await UserModel.findByEmail(input.email);
 
     if (!user) {
-      throw new AppError("Credenciales Invalidas", 401);
+      throw new AppError("Credenciales invalidas", 401);
     }
 
     const isValidPassword = await argon2.verify(user.password, input.password);
     if (!isValidPassword) {
-      throw new AppError("Credenciales Invalidas", 401);
+      throw new AppError("Credenciales invalidas", 401);
     }
 
     const accessToken = generateAccessToken(user.id, user.role);

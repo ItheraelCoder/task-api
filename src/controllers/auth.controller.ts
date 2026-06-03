@@ -22,6 +22,6 @@ export const AuthController = {
   }),
   logout: catchAsync(async (req: Request, res: Response) => {
     await AuthService.logout(req.user!.id);
-    res.status(200).json({ status: "success", message: "Sesion Cerrada" });
+    res.status(200).json({ status: "success", message: "Sesion cerrada" });
   }),
 };

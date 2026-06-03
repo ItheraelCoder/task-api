@@ -7,6 +7,7 @@ const envSchema = z.object({
     .enum(["development", "production", "test"])
     .default("development"),
   DATABASE_URL: z.url("La url de la base de datos debe ser valida"),
+  DATABASE_URL_TEST: z.url().optional(),
   JWT_SECRET: z
     .string()
     .min(32, "JWT_SECRET debe contener al menos 32 caracteres"),
