@@ -9,6 +9,7 @@
     }
   },
   "scripts": {
+    "start": "bun src/index.ts",
     "dev": "bun --watch src/index.ts",
     "build": "tsc --noEmit",
     "test": "vitest run",
