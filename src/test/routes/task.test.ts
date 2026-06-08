@@ -157,7 +157,7 @@ describe("PATCH /api/tasks/:id", () => {
       .set("Authorization", `Bearer ${accessToken}`)
       .send({ title: "Titulo actualizado", completed: true });
 
-    expect(res.status).toBe(201);
+    expect(res.status).toBe(200);
     expect(res.body.data.task.title).toBe("Titulo actualizado");
     expect(res.body.data.task.completed).toBe(true);
   });

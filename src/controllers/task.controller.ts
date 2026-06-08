@@ -26,7 +26,7 @@ export const TaskController = {
     const { id } = req.params as TaskParams;
     const input = req.body as UpdateTaskInput;
     const task = await TaskService.update(id, req.user!.id, input);
-    res.status(201).json({ status: "success", data: { task } });
+    res.status(200).json({ status: "success", data: { task } });
   }),
   delete: catchAsync(async (req: Request, res: Response) => {
     const { id } = req.params as TaskParams;
