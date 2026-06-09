@@ -2,6 +2,8 @@
 
 ![CI](https://github.com/ItheraelCoder/task-api/actions/workflows/ci.yml/badge.svg?branch=main)
 
+**Live:** https://task-api-production-9611.up.railway.app
+
 REST API for task management with JWT authentication, refresh token rotation, and role-based access control.
 
 Built with a TypeScript-first stack focused on type safety, clean architecture, and professional Git workflows.
