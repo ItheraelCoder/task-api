@@ -16,7 +16,9 @@ export const UpdateTaskDTO = z.object({
     title: z
       .string()
       .min(1, { error: "El titulo no puede estar vacio" })
-      .max(255, { error: "El titulo no puede tener mas de 255 caracteres" }),
+      .max(255, { error: "El titulo no puede tener mas de 255 caracteres" })
+      .trim()
+      .optional(),
     description: z.string().trim().optional(),
     completed: z.boolean().optional(),
   }),
